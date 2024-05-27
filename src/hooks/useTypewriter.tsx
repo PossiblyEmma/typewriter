@@ -4,7 +4,7 @@ type UseTypewriterOptions = { text: string; charactersPerSecond?: number };
 
 export const useTypeWriter = ({
   text,
-  charactersPerSecond = 2,
+  charactersPerSecond = 5,
 }: UseTypewriterOptions): string => {
   const [displayedText, setDisplayedText] = useState<string>("");
   const typingDelay = (1 / charactersPerSecond) * 1000;
