@@ -1,3 +1,5 @@
+import { Display } from "./components/Display";
+import { createGlobalStyle } from "styled-components";
 import { useTypeWriter } from "./hooks/useTypewriter";
 
 function App() {
@@ -8,14 +10,24 @@ function App() {
     "Molestie nunc non blandit massa enim nec dui. " +
     "Curabitur gravida arcu ac tortor dignissim convallis aenean et tortor. " +
     "Sed ullamcorper morbi tincidunt ornare massa eget egestas. " +
-    "Dignissim enim sit amet venenatis urna cursus eget. " +
-    "Morbi tristique senectus et netus et malesuada fames ac. " +
-    "Eleifend donec pretium vulputate sapien nec sagittis aliquam malesuada. " +
-    "Lectus sit amet est placerat. " +
-    "Tincidunt ornare massa eget egestas purus viverra accumsan in nisl.";
-  const display = useTypeWriter({ text, charactersPerSecond: 5 });
+    "Dignissim enim sit amet venenatis urna cursus eget.";
+  const display = useTypeWriter({ text, charactersPerSecond: 10 });
 
-  return display;
+  return (
+    <>
+      <GlobalStyle />
+      <Display>{display}</Display>
+    </>
+  );
 }
+
+const GlobalStyle = createGlobalStyle`
+  html { font-size: 16px; }
+  * { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+`;
 
 export default App;
