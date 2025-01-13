@@ -1,5 +1,6 @@
+import styled, { createGlobalStyle } from "styled-components";
+
 import { Display } from "./components/Display";
-import { createGlobalStyle } from "styled-components";
 import { useTypeWriter } from "./hooks/useTypewriter";
 
 function App() {
@@ -16,7 +17,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Display>{display}</Display>
+      <Container>
+        <Display>{display}</Display>
+      </Container>
     </>
   );
 }
@@ -29,5 +32,11 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 `;
-
+const Container = styled.div`
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background: #222;
+`;
 export default App;

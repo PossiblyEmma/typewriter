@@ -4,15 +4,16 @@ import { Colours } from "../common/colours";
 import React from "react";
 
 type Props = React.PropsWithChildren<Record<string, unknown>>;
+
 export function Display({ children }: Props) {
   return (
-    <Bezel>
-      <ScanArea>{children}</ScanArea>
-    </Bezel>
+    <Frame>
+      <Content>{children}</Content>
+    </Frame>
   );
 }
 
-const Bezel = styled.div`
+const Frame = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
@@ -27,7 +28,7 @@ const Bezel = styled.div`
   overflow: hidden;
   line-height: 1.2;
 
-  // Glass effect gradients
+  /* Glass effect gradients */
   &:before {
     content: "";
     position: absolute;
@@ -66,14 +67,16 @@ const blink = keyframes`
   60%, 100% {opacity: 1;} 
 `;
 
-const ScanArea = styled.div`
+const Content = styled.div`
   margin: 1.5rem;
-  overflow-y: auto;
+  overflow-y: hidden;
 
-  /* font-size: 1.2rem; */
   font-family: "Courier", "Courier New", "Consolas", "Lucida Console", monospace;
   color: ${Colours.LIGHT};
+
+  /* Text glow effect */
   text-shadow: 0 0 5px #c8c8c8;
+
   -webkit-hyphens: auto;
   -moz-hyphens: auto;
   -ms-hyphens: auto;
@@ -89,6 +92,8 @@ const ScanArea = styled.div`
     right: 0;
     border-radius: 0.8rem;
     margin: 0.625rem;
+
+    /* CRT phosphor effect */
     background: linear-gradient(
         rgba(18, 16, 16, 0) 50%,
         rgba(0, 0, 0, 0.25) 50%
@@ -99,11 +104,13 @@ const ScanArea = styled.div`
         rgba(0, 255, 0, 0.02),
         rgba(0, 0, 255, 0.06)
       );
+
     z-index: 2;
     background-size: 100% 2px, 3px 100%;
     pointer-events: none;
   }
 
+  /* Cursor */
   &::after {
     content: "|";
     color: orange;
