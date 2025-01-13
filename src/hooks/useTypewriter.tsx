@@ -1,7 +1,18 @@
 import { useEffect, useRef, useState } from "react";
 
-type UseTypewriterOptions = { text: string; charactersPerSecond?: number };
+type UseTypewriterOptions = {
+  // The full text to be rendered using the typewriter effect.
+  text: string;
+  // Characters to return per second. Defaults to 5.
+  charactersPerSecond?: number;
+};
 
+/**
+ * A typewriter effect hook.
+ *
+ * Returns input text character-by-character with an option
+ * to control the typing speed.
+ */
 export const useTypeWriter = ({
   text,
   charactersPerSecond = 5,
